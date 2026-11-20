@@ -158,7 +158,7 @@ export default function Navbar() {
 
             <a
               href="#contact"
-              className="hidden bg-ink px-6 py-2.5 text-[13px] font-medium text-white transition hover:bg-teal sm:inline-block"
+              className="hidden bg-teal px-6 py-2.5 text-[13px] font-medium text-white transition hover:bg-leaf sm:inline-block"
             >
               {contactLabel}
             </a>
@@ -214,7 +214,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-5 block bg-ink py-3 text-center text-sm font-medium text-white"
+              className="mt-5 block bg-teal py-3 text-center text-sm font-medium text-white transition hover:bg-leaf"
             >
               {contactLabel}
             </a>

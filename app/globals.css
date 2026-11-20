@@ -4,20 +4,19 @@
   --background: #ffffff;
   --foreground: #0b1f33;
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Corporate palette: deep navy, restrained green, a single red accent */
+  /* Precision Clean-Tech palette: deep navy, crisp emerald/teal, cool mint-white */
   --color-ink: #0b1f33;
-  --color-navy: #12304a;
-  --color-teal: #0e6b5c;
-  --color-leaf: #2f9e6f;
-  --color-mist: #f5f7f7;
-  --color-line: #e2e8e8;
+  --color-navy: #102e46;
+  --color-teal: #0b6e5b;
+  --color-leaf: #10b981;
+  --color-mist: #f1f7f5;
+  --color-line: #dce8e3;
   --color-sun: #c8102e;
 }
 
@@ -197,4 +196,27 @@ body {
   .logo .logo-orbit {
     animation: none;
   }
+}
+/* Subtle emerald energy auras ------------------------------------------ */
+.bg-hero-glow {
+  background-image: radial-gradient(
+    circle at 82% 24%,
+    rgba(16, 185, 129, 0.1) 0%,
+    rgba(11, 110, 91, 0.04) 36%,
+    transparent 68%
+  );
+}
+
+.bg-clean-glow {
+  background-image:
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(16, 185, 129, 0.14) 0%,
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 85% 78%,
+      rgba(11, 110, 91, 0.16) 0%,
+      transparent 52%
+    );
 }

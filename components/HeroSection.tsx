@@ -33,12 +33,16 @@ export default function HeroSection() {
   const isJa = lang === "ja";
 
   return (
-    <section className="bg-white pt-24 sm:pt-32">
+    <section className="bg-hero-glow bg-white pt-24 sm:pt-32">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 lg:grid-cols-12 lg:pb-24 lg:pt-16">
         <div className="lg:col-span-6">
           <Reveal>
             <p className="mb-7 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-teal">
-              <span className="h-px w-10 bg-teal" />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-leaf" />
+              </span>
+              <span className="h-px w-8 bg-teal" />
               {isJa
                 ? "水素エネルギーソリューション · Hydrogen Energy Solutions"
                 : "Hydrogen Energy Solutions · 水素エネルギー"}
@@ -62,7 +66,7 @@ export default function HeroSection() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#contact"
-                className="bg-ink px-9 py-4 text-center text-sm font-medium tracking-wide text-white transition hover:bg-teal"
+                className="bg-teal px-9 py-4 text-center text-sm font-medium tracking-wide text-white shadow-sm shadow-teal/20 transition hover:bg-leaf"
               >
                 {isJa ? "お問い合わせ" : "Contact us"}
               </a>

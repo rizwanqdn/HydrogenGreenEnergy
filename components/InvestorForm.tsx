@@ -259,7 +259,7 @@ export default function InvestorForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center gap-2 bg-ink px-10 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-teal disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 bg-teal px-10 py-3.5 text-sm font-medium tracking-wide text-white shadow-sm shadow-teal/20 transition hover:bg-leaf disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting && (
             <span
