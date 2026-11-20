@@ -25,21 +25,26 @@ export default function AnimatedFavicon() {
     const draw = () => {
       ctx.clearRect(0, 0, 64, 64);
 
-      // Navy rounded badge
-      ctx.fillStyle = "#0b1f33";
+      // Full white circular badge
+      ctx.fillStyle = "#ffffff";
       ctx.beginPath();
-      ctx.roundRect(0, 0, 64, 64, 14);
+      ctx.arc(32, 32, 31, 0, Math.PI * 2);
       ctx.fill();
 
+      // Subtle outer border so the white circle stays crisp on light browser tabs
+      ctx.strokeStyle = "rgba(11, 31, 51, 0.14)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
       // Subtle orbital ring
-      ctx.strokeStyle = "rgba(255,255,255,0.22)";
+      ctx.strokeStyle = "rgba(11, 31, 51, 0.2)";
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(32, 32, 24, 0, Math.PI * 2);
       ctx.stroke();
 
       // Green H atom
-      ctx.fillStyle = "#2f9e6f";
+      ctx.fillStyle = "#10b981";
       ctx.beginPath();
       ctx.arc(25, 32, 11.5, 0, Math.PI * 2);
       ctx.fill();
@@ -50,12 +55,12 @@ export default function AnimatedFavicon() {
       ctx.arc(39, 32, 11.5, 0, Math.PI * 2);
       ctx.fill();
 
-      // White bond overlap
+      // Deep navy bond overlap (matches navbar Logo)
       ctx.save();
       ctx.beginPath();
       ctx.arc(25, 32, 11.5, 0, Math.PI * 2);
       ctx.clip();
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#0b1f33";
       ctx.beginPath();
       ctx.arc(39, 32, 11.5, 0, Math.PI * 2);
       ctx.fill();
@@ -64,7 +69,7 @@ export default function AnimatedFavicon() {
       // Orbiting electron
       const ex = 32 + Math.cos(angle) * 24;
       const ey = 32 + Math.sin(angle) * 24;
-      ctx.fillStyle = "#2f9e6f";
+      ctx.fillStyle = "#0b6e5b";
       ctx.beginPath();
       ctx.arc(ex, ey, 4.2, 0, Math.PI * 2);
       ctx.fill();
