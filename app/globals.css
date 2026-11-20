@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1f33;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Corporate palette: deep navy, restrained green, a single red accent */
+  --color-ink: #0b1f33;
+  --color-navy: #12304a;
+  --color-teal: #0e6b5c;
+  --color-leaf: #2f9e6f;
+  --color-mist: #f5f7f7;
+  --color-line: #e2e8e8;
+  --color-sun: #c8102e;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-geist-sans), "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", "Noto Sans JP", Meiryo, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #0e6b5c;
+  color: #fff;
+}
+
+/* Subtle engineering grid background ----------------------------------- */
+.bg-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Subtle scroll reveal ------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated bars -------------------------------------------------------- */
+.bar-fill {
+  width: 0;
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.is-visible .bar-fill,
+.bar-fill.is-visible {
+  width: var(--w);
+}
+
+/* Process & Flow Animations -------------------------------------------- */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.flow-line {
+  stroke-dasharray: 6 6;
+  animation: flow 1.25s linear infinite;
+}
+
+@keyframes processFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.process-fade {
+  animation: processFade 0.4s ease-out both;
+}
+
+@keyframes atomPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+.atom-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atomPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes containerGlide {
+  0%,
+  100% {
+    transform: translateX(-14px);
+  }
+  50% {
+    transform: translateX(14px);
+  }
+}
+.container-glide {
+  animation: containerGlide 3.4s ease-in-out infinite;
+}
+
+@keyframes heatRise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.heat-rise {
+  animation: heatRise 1.8s ease-in-out infinite;
+}
+
+/* Logo Animations (matches Logo.tsx) ----------------------------------- */
+@keyframes logoDraw {
+  from {
+    stroke-dashoffset: 176;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes logoOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logo .logo-ring {
+  stroke-dasharray: 176;
+  animation: logoDraw 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.logo .logo-orbit {
+  transform-origin: 32px 32px;
+  animation: logoOrbit 12s linear infinite;
+}
+.logo.logo-still .logo-ring,
+.logo.logo-still .logo-orbit {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .bar-fill,
+  .process-fade {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .bar-fill {
+    width: var(--w);
+  }
+  .flow-line,
+  .atom-pulse,
+  .container-glide,
+  .heat-rise,
+  .logo .logo-ring,
+  .logo .logo-orbit {
+    animation: none;
+  }
+}
